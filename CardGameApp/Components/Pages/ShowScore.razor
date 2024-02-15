@@ -1,0 +1,12 @@
+﻿@if (Score != null && !HasError)
+{
+    <div id="score" class="mt-4">
+        <p style="color:green">Score: @Score</p>
+    </div>
+}
+else
+{
+    <div id="error" class="mt-4">
+        <p style="color:red">@ErrorMessage</p>
+    </div>
+}

@@ -1,0 +1,51 @@
+﻿@page "/game"
+@rendermode InteractiveServer
+
+<PageTitle>Game</PageTitle>
+
+<h1>Card Game</h1>
+
+<EditForm Model=@Card OnValidSubmit="@OnValidSubmit" FormName="frmAdd">
+    <DataAnnotationsValidator />
+    <div class="form-group mb-3 row">
+        <label class="col-sm-2 col-form-label">Card Value: </label>
+        <div class="col-sm-10">
+            <select class="form-control" id="ddl-values" @bind="@Card.SelectedCardValue">
+                <option value="">Please Select</option>
+                @foreach (var cardValue in CardValues)
+                {
+                    <option value="@cardValue.Code">@cardValue.Description</option>
+                }
+            </select>
+            <ValidationMessage For="() => Card.SelectedCardValue" />
+        </div>
+    </div>
+
+    <div class="form-group mb-3 row">
+        <label class="col-sm-2 col-form-label">Suit: </label>
+        <div class="col-sm-10">
+            <select class="form-control" id="ddl-suits" @bind="@Card.SelectedSuit">
+                <option value="">Please Select</option>
+                @foreach (var suit in Suits)
+                {
+                    <option value="@suit.Code">@suit.Description</option>
+                }
+            </select>
+            <ValidationMessage For="() => Card.SelectedSuit" />
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Add to list" />
+    <input type="button" class="btn btn-primary" @onclick="@AddJoker" value="Add Joker" />
+    <input type="button" class="btn btn-secondary" id="clear-ddl-selections" @onclick="@ClearDropDownSelections" value="Clear" />
+</EditForm>
+
+@if (SelectedCardsList.Count > 0)
+{
+    <List Header="Cards List" Cards="SelectedCardsList" />
+
+    <input type="button" class="btn btn-primary" id="btn-score" @onclick="@GetScore" value="Score" />
+    <input type="button" class="btn btn-secondary" @onclick="@ClearAll" value="Clear All" />
+}
+
+<ShowScore Score="@Score" HasError="@HasError" ErrorMessage="@ErrorMessage" />

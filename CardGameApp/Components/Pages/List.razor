@@ -1,0 +1,17 @@
+﻿<div>
+    <table class="table table-hover mt-4" id="tbl-cards">
+        <thead>
+            <tr>
+                <th scope="col">@Header</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var card in Cards)
+            {
+                <tr>
+                    <td>@card</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
