@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CardGameApp/obj
+/.vs/CardGameApp/FileContentIndex
+/CardGameApp.FunctionalTests/bin/Debug/net8.0
+/CardGameApp.FunctionalTests/obj
+/CardGameApp.UnitTests/bin/Debug/net8.0
+/CardGameApp.UnitTests/obj
