@@ -233,7 +233,7 @@ namespace CardGameApp.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException), "Cards cannot be duplicated")]
+        [ExpectedException(typeof(ArgumentException), "Cards cannot be duplicated")]
         public void GetScore_DuplicateCards_ShouldThrowException()
         {
             var listOfCards = new List<string>() { "3H", "3H" };
@@ -242,7 +242,7 @@ namespace CardGameApp.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException), "Cards cannot be duplicated")]
+        [ExpectedException(typeof(ArgumentException), "Cards cannot be duplicated")]
         public void GetScore_DuplicateCards_FourOfDiamondsFiveOfDiamondsFourOfDiamonds_ShouldThrowException()
         {
             var listOfCards = new List<string>() { "4D", "5D", "4D" };
@@ -251,7 +251,7 @@ namespace CardGameApp.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException), "A hand cannot contain more than two Jokers")]
+        [ExpectedException(typeof(ArgumentException), "A hand cannot contain more than two Jokers")]
         public void GetScore_MoreThanTwoJokers_ShouldThrowException()
         {
             var listOfCards = new List<string>() { "JK", "JK", "JK" };

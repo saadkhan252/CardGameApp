@@ -119,7 +119,6 @@ namespace CardGameApp.FunctionalTests.Components
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException), "Cards cannot be duplicated")]
         public void RenderGameComponent_DuplicateCards_ShouldRenderCardsCannotBeDuplicated()
         {
             //render Game component
@@ -170,6 +169,12 @@ namespace CardGameApp.FunctionalTests.Components
 
             //click on the Score button
             cut.Find("#btn-score").Click();
+
+            //check score
+            var result = cut.Find("#error");
+            result.MarkupMatches(@"<div id=""error"" class=""mt-4"">
+                <p style=""color:red"">Cards cannot be duplicated</p>
+            </div>");
         }
     }
 }
