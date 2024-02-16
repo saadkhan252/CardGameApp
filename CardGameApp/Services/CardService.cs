@@ -57,7 +57,7 @@ namespace CardGameApp.Services
             var duplicateCards = GetDuplicateCards(cardsList);
             if (duplicateCards.Count > 0 && !duplicateCards.Contains(joker))
             {
-                throw new InvalidOperationException("Cards cannot be duplicated");
+                throw new ArgumentException("Cards cannot be duplicated");
             }
         }
 
@@ -116,7 +116,7 @@ namespace CardGameApp.Services
 
             if (countOfJokers > 2)
             {
-                throw new InvalidOperationException("A hand cannot contain more than two Jokers");
+                throw new ArgumentException("A hand cannot contain more than two Jokers");
             }
         }
 
